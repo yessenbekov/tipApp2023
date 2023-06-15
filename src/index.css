@@ -1,13 +1,362 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --strong-cyan: hsl(172, 67%, 45%);
+  --dark-cyan: hsl(183, 100%, 15%);
+  --dark-grayish-cyan-1: hsl(186, 14%, 43%);
+  --dark-grayish-cyan-2: hsl(184, 14%, 56%);
+  --light-grayish-cyan-1: hsl(185, 41%, 84%);
+  --light-grayish-cyan-2: hsl(189, 41%, 97%);
+  --color-white: hsl(0, 0%, 100%);
+  --error: hsl(9, 48%, 61%);
+  --disabled: hsl(184, 45%, 29%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--light-grayish-cyan-1);
+  font-family: "Space Mono", monospace;
+  font-size: 24px;
+  color: var(--dark-grayish-cyan-1);
+}
+
+h2 {
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  margin: 10rem 0 5rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  padding: 1rem 2.5rem;
+  border-radius: 20px;
+  width: min(90%, 58rem);
+  box-shadow: 0.5rem 1rem 1rem hsla(183, 100%, 15%, 0.175);
+  margin-bottom: 15rem;
+}
+
+.user-input,
+.results {
+  width: 50%;
+}
+
+.bill,
+.tip-selection,
+.number-people {
+  padding: 1.25rem 0;
+}
+
+input {
+  background-color: var(--light-grayish-cyan-2);
+  color: var(--dark-cyan);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  text-align: right;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 0.5rem 1rem;
+  width: 85%;
+  cursor: pointer;
+}
+
+input[type="number"]:focus {
+  border: 2px solid var(--strong-cyan);
+  caret-color: var(--strong-cyan);
+}
+
+/* Hide arrows on number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+::placeholder {
+  color: var(--dark-grayish-cyan-2);
+  opacity: 1;
+}
+
+.form-input {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+}
+
+.set-amount {
+  background-color: var(--dark-cyan);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 7rem;
+  text-align: center;
+}
+
+.set-amount:hover,
+.custom-amount:hover {
+  background-color: hsla(172, 67%, 45%, 0.4);
+  color: var(--dark-cyan);
+}
+
+.custom-amount {
+  width: 7rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+input[type="number"].custom-amount.amount::placeholder {
+  color: var(--dark-grayish-cyan-1);
+  opacity: 1;
+  text-align: center;
+}
+
+input[type="number"].custom-amount {
+  text-align: right;
+}
+
+.heading-error {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4rem;
+}
+
+.results {
+  background-color: var(--dark-cyan);
+  padding: 2.5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25.5rem;
+}
+
+.tip-amount,
+.total-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.results-subtitle {
+  color: var(--color-white);
+}
+
+.per-person {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--dark-grayish-cyan-1);
+}
+
+.calculated-results {
+  color: var(--strong-cyan);
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.reset {
+  background: var(--color-white);
+  border-radius: 7px;
+}
+
+.disabled-button {
+  background-color: var(--disabled);
+  color: var(--dark-cyan);
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+input[type="radio"]:checked + label,
+.enabled-button {
+  background-color: var(--strong-cyan);
+  color: var(--dark-cyan);
+  cursor: pointer;
+}
+
+.enabled-button:hover {
+  background-color: hsla(172, 67%, 45%, 0.4);
+}
+
+.error {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--error);
+  display: none;
+}
+
+.input-error,
+input[type="number"].input-error:focus {
+  border: 2px solid var(--error);
+}
+
+input[type="number"].input-error:focus {
+  caret-color: var(--error);
+}
+
+/* Footer Section */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: var(--dark-cyan);
+}
+
+.attribution a:hover {
+  color: var(--strong-cyan);
+  text-decoration: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 950px) {
+  .app {
+    min-height: auto;
+  }
+
+  header {
+    margin: 3rem 0 2.75rem;
+  }
+
+  main {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 0;
+  }
+
+  footer {
+    background-color: var(--color-white);
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  header {
+    padding: 2rem;
+  }
+
+  .set-amount,
+  .custom-amount {
+    width: 100%;
+  }
+
+  .tip-button {
+    width: 45%;
+  }
+
+  .calculated-results {
+    font-size: 2.5rem;
+  }
+
+  .results {
+    height: auto;
+  }
+
+  .buttons {
+    justify-content: space-between;
+  }
+
+  .heading-error {
+    flex-direction: column;
+    padding-right: 0.1rem;
+  }
+
+  .error {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .user-input,
+  .results {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .user-input,
+  .results {
+    width: 100%;
+  }
+
+  .calculated-results {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main {
+    padding: 1.5rem;
+  }
+  .calculated-results {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .tip-amount,
+  .total-amount {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }
