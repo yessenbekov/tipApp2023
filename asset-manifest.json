@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/tipApp2023/static/css/main.acce06cc.css",
+    "main.js": "/tipApp2023/static/js/main.93bf06fa.js",
+    "static/media/logo.svg": "/tipApp2023/static/media/logo.42794e2d539a76406279fb45dd3a6dda.svg",
+    "static/media/dollar.svg": "/tipApp2023/static/media/dollar.9f9be3534a9295a6595764d63a7bf3a3.svg",
+    "static/media/person.svg": "/tipApp2023/static/media/person.65bfd20465dd1d2cb58c0b53e1160442.svg",
+    "index.html": "/tipApp2023/index.html",
+    "main.acce06cc.css.map": "/tipApp2023/static/css/main.acce06cc.css.map",
+    "main.93bf06fa.js.map": "/tipApp2023/static/js/main.93bf06fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.acce06cc.css",
+    "static/js/main.93bf06fa.js"
+  ]
+}
